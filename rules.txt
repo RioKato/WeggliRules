@@ -1,0 +1,115 @@
+# https://github.com/weggli-rs/weggli
+
+{
+  _ $buf[_];
+  memcpy($buf,_,_);
+}
+
+{
+  $ret = snprintf($buf,_,_);
+  $buf[$ret] = _;
+}
+
+{
+  _* $p;
+  NOT: $p = _;
+  _(&$p);
+}
+
+{
+  $x = _.GetWeakPtr();
+  DCHECK($x);
+  $x->_;
+}
+
+{
+  DCHECK(_!=_.end());
+}
+
+_ _(_ $limit) {
+  _ $buf[_];
+  for (_; $i<$limit; _) {
+    $buf[$i]=_;
+  }
+}
+
+_ _(_* $input, _* $output) {
+  for (_($i);_;_) {
+    $input[$i]=_($output);
+  }
+}
+
+# https://dustri.org/b/playing-with-weggli.html
+
+{
+  kmalloc(_ * _);
+}
+
+{
+  kmalloc($len + _);
+  memcpy(_, _, $len);
+}
+
+{
+  $type* _;
+  _(_, _, sizeof($type));'
+}
+
+{
+  _($dest, $src, sizeof($src));
+}
+
+{
+  _($dest, $src, strlen($src));
+}
+
+{
+  _($dest, $src, $src->_);
+}
+
+{
+  _($dest, $src->_, $src->_);
+}
+
+{
+  kfree($a);
+  NOT: goto _;
+  NOT: break;
+  NOT: continue;
+  NOT: return;
+  NOT: $a = _;
+  kfree($a);
+}
+
+_ _(_ $len) {
+  NOT: _ = $buf[$len];
+  NOT: $buf[$len] = _;
+  _ $buf[$len];
+}
+
+{
+  $buf = alloca(_);
+  free($buf);
+}
+
+{
+  NOT: $a = memdup_user(_);
+  NOT: memset($a);
+  NOT: memset($a->$b);
+  copy_to_user(_, $a, sizeof(*$a));
+}
+
+{
+  $pos = snprintf(_ + $pos);
+}
+
+{
+  $len = snprintf(0, 0, _);
+  malloc($len);
+}
+
+{
+  $a = new _;
+  $b = (_) $a;
+  delete $b;
+}
